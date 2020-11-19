@@ -35,7 +35,7 @@ export default {
             if (this.date && this.heure) {
                 const json = { date: this.date,heure: this.heure ,user: this.$store.state.user ,hotel:this.hotel }
                 console.log(json)
-                const res = await axios.post('http://127.0.0.1:3000/site/mail', json, {
+                const res = await axios.post(this.$store.state.url+'site/mail', json, {
                     headers: {
                         // Overwrite Axios's automatically set Content-Type
                         'Content-Type': 'application/json'

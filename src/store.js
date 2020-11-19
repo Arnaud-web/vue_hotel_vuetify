@@ -7,6 +7,8 @@ export default new Vuex.Store({
         user: [],
         hotels:[],
         comments:[],
+        url1:'http://127.0.0.1:3000/',
+        url:'https://afternoon-coast-58196.herokuapp.com/'
     },
     getters: {
         getUser(){

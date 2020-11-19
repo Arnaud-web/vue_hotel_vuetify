@@ -26,7 +26,7 @@ export default {
           hotel: this.hotel.id,
           user: this.$store.state.user.id
         };
-        const res = await axios.post("http://127.0.0.1:3000/v1/user_comment", json, {
+        const res = await axios.post(this.$store.state.url+"v1/user_comment", json, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",

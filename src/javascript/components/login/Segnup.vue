@@ -32,7 +32,7 @@
         ></v-text-field>
         <v-text-field
           type="password"
-          label="Password"
+          label="Password (min 8 caracters) "
           prepend-icon="mdi-lock"
           v-model="password"
         ></v-text-field>
@@ -68,14 +68,15 @@ export default {
     }),
 
     async send() {
-      console.log(this.email, this.password);
+      console.log(this.email, this.password,this.role.value);
+      console.log("Role",this.role)
       if (this.password && this.email) {
         const json = {
           email: this.email,
-          role: this.role,
+          role: this.role.value,
           password: this.password
         };
-        const res = await axios.post("http://127.0.0.1:3000/v1/users", json, {
+        const res = await axios.post(this.$store.state.url+"v1/users", json, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",

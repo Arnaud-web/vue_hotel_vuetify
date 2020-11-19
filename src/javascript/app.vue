@@ -79,12 +79,15 @@
             </div>
             <LoginApp v-show="!showC" v-if="showLogin()" />
             <!-- {{ this.$store.state.user }} -->
-            <div class="create_" v-if="!showLogin()">
-              <Create v-if="this.$store.state.user.role == 'hotel'" />
-            </div>
+            <v-btn color="info" @click="(form = false), (showH = true)"
+              >Listes Hotel</v-btn
+            >
           </div>
 
           <div v-if="!form">
+            <div class="create_" v-if="!showLogin()">
+              <Create v-if="this.$store.state.user.role == 'hotel'" />
+            </div>
             <div v-show="showH">
               <v-container width="400px">
                 <v-card-text>
@@ -171,7 +174,7 @@ import FormMail from "./components/mail/FormMail";
 import Comments from "./components/hotel/Comments";
 import CommentShow from "./components/hotel/CommentShow";
 export default {
-  data: function () {
+  data: function() {
     return {
       message: "Hello Word",
       hotels: [],
@@ -239,7 +242,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://127.0.0.1:3000/v1/hotels")
+      .get(this.$store.state.url + "v1/hotels")
       .then((response) => {
         this.hotels = response.data;
         this.$store.state.hotels = response.data;
@@ -251,7 +254,7 @@ export default {
         this.errored = true;
       });
     axios
-      .get("http://127.0.0.1:3000/v1/user_comment")
+      .get(this.$store.state.url + "v1/user_comment")
       .then((response) => {
         // this.hotels = response.data;
         this.$store.state.comments = response.data;

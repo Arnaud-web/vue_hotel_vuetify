@@ -52,7 +52,7 @@ export default {
       if (this.password && this.email) {
         const json = { email: this.email, password: this.password };
         const res = await axios.post(
-          "http://127.0.0.1:3000/v1/users/login",
+          this.$store.state.url+"v1/users/login",
           json,
           {
             headers: {
