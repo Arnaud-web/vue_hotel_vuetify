@@ -10,8 +10,8 @@
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
       <v-toolbar-title>
-      <v-text-field
-        v-show = "!showOnHotel"
+        <v-text-field
+          v-show="!showOnHotel"
           dark
           prepend-icon="mdi-map-search"
           type="text"
@@ -19,10 +19,10 @@
           v-model="search"
           @change="filterHotel"
         />
-        <span v-if = "search !=''" > {{filterHotel.length}} resultats </span>
-        </v-toolbar-title>
+        <span v-if="search != ''"> {{ filterHotel.length }} resultats </span>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
-       <v-btn @click="showOnHotel = false">Liste Hotels</v-btn>
+      <v-btn @click="showOnHotel = false">Liste Hotels</v-btn>
       <v-btn v-show="!user.id" @click="showCompte = !showCompte">Compte </v-btn>
       <v-btn v-show="user.id" @click="deconnect()">deconnecter </v-btn>
       <v-btn icon>
@@ -82,7 +82,7 @@
           <div v-if="showOnHotel">
             <ShowOnHotel :hotel="temHotel" />
             <div>
-              <v-btn @click="showOnHotel = false">Liste Hotels</v-btn>
+              <v-btn dark @click="showOnHotel = false">Liste Hotels</v-btn>
             </div>
           </div>
         </v-main>
@@ -121,7 +121,7 @@ export default {
     filterHotel() {
       if (this.search != "") {
         var _hotels = this.hotels.filter((hotel) => {
-          return hotel.name.toLowerCase().includes((this.search).toLowerCase());
+          return hotel.name.toLowerCase().includes(this.search.toLowerCase());
         });
         console.log("recherche", _hotels);
         return _hotels;
@@ -175,5 +175,6 @@ export default {
   float: left;
   /* width: 33%; */
   display: contents;
+  text-align: center;
 }
 </style>

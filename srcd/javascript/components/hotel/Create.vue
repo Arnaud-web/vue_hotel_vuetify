@@ -3,31 +3,31 @@
     <v-card>
       <v-card-title>
         <v-spacer></v-spacer>
-        <v-btn @click="showFormulaire = !showFormulaire">Cree un Hotel </v-btn>
-        <v-spacer></v-spacer>
+        <v-btn color="info" @click="showFormulaire = !showFormulaire"
+          >Cree un Hotel
+        </v-btn>
+         <v-spacer></v-spacer>
       </v-card-title>
       <v-card-text>
         <div v-if="showFormulaire">
-          <v-text-field
-            type="text"
-            placeholder="Nom de l'Hotel"
-            v-model="name"
-          />
-          <v-text-field
-            type="text"
-            placeholder="Specialite"
-            v-model="specialty"
-          />
-          <v-text-field type="text" placeholder="Address" v-model="adress" />
-          <v-text-field type="text" placeholder="Prix" v-model="prix" />
-          <v-text-field
-            type="text"
-            placeholder="Url de l'Image de l'Hotel"
-            v-model="photo"
-          />
-          <v-btn dark @click="save()">Save</v-btn>
-        </div>
+        <v-text-field type="text" placeholder="Nom de l'Hotel" v-model="name" />
+        <v-text-field
+          type="text"
+          placeholder="Specialite"
+          v-model="specialty"
+        />
+        <v-text-field type="text" placeholder="Address" v-model="adress" />
+        <v-text-field type="text" placeholder="Prix" v-model="prix" />
+        <v-text-field
+          type="text"
+          placeholder="Url de l'Image de l'Hotel"
+          v-model="photo"
+        />
+        <v-btn color="success" @click="save()">Save</v-btn>
+      </div>
+
       </v-card-text>
+      
     </v-card>
   </v-container>
 </template>
@@ -63,16 +63,12 @@ export default {
           adress: this.adress,
           user: this.$store.state.user.id,
         };
-        const res = await axios.post(
-          this.$store.state.url + "v1/hotels",
-          json,
-          {
-            headers: {
-              // Overwrite Axios's automatically set Content-Type
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const res = await axios.post(this.$store.state.url+"v1/hotels", json, {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/json",
+          },
+        });
         console.log("res", res);
         this.data = res;
         if (this.data.data.id) {

@@ -1,9 +1,9 @@
 <template>
-  <div style="text-align: center; margin: 20px">
+  <div style="text-align: center;margin: 20px">
     <div class="container_h">
       <v-card class="h">
-        <div class="name_h">
-          <v-card-title>{{ hotel.name }}</v-card-title>
+       <div class = "name_h">
+         <v-card-title >{{ hotel.name }}</v-card-title>
         </div>
         <v-card-text>
           <v-card-subtitle>
@@ -11,35 +11,17 @@
             <v-spacer></v-spacer>
             <span class="options">{{ hotel.specialty }}</span>
           </v-card-subtitle>
-          <v-img :src="hotel.photo" :alt="'image100x100 ' + hotel.photo" />
-          <span class="prix">{{ hotel.prix }} $</span>
-          <SendMail v-if="user.id" :hotel="hotel" />
-          <ShowCommentsHotel :hotel="hotel" />
-          <Comments v-if="user.id" :hotel="hotel" />
+          <v-img :src="hotel.photo" :alt="'image100x100 '+hotel.photo" />
+        <span class="prix">{{ hotel.prix }} $</span>
         </v-card-text>
       </v-card>
-      <div></div>
     </div>
   </div>
 </template>
 
 <script>
-import Comments from "./Comments";
-import { mapState } from "vuex";
-import ShowCommentsHotel from "./ShowCommentsHotel";
-import SendMail from "../mail/SendMail";
 export default {
   props: ["hotel"],
-  computed: {
-    ...mapState({
-      user: "user",
-    }),
-  },
-  components: {
-    Comments,
-    ShowCommentsHotel,
-    SendMail,
-  },
 };
 </script>
 <style>
@@ -64,11 +46,10 @@ export default {
   border-style: none;
   vertical-align: middle;
   height: auto;
-}
-.prix {
-  display: block;
-  color: lawngreen;
-  font-size: 25px;
+}.prix{
+    display: block;
+    color: lawngreen;
+    font-size: 25px;
 }
 .name_h {
   display: block;

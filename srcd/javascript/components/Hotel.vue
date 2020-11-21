@@ -1,24 +1,21 @@
 <template>
-  <v-card class="container_hotel">
-    <div class="hotel">
-      <div class="name_hotel">
-        <v-card-title>{{ hotel.name }}</v-card-title>
-      </div>
-      <v-card-text>
-        <v-card-subtitle>
-          <span class="options">{{ hotel.adress }}</span>
-          <v-spacer></v-spacer>
-          <span class="options">{{ hotel.specialty }}</span>
-        </v-card-subtitle>
-        <v-img
-          class="image_hotel"
-          :src="hotel.photo"
-          :alt="'image100x100 ' + hotel.photo"
-        />
+    <v-card class="container_hotel" >
+      <div class="hotel">
+        <div class = "name_hotel">
+         <v-card-title >{{ hotel.name }}</v-card-title>
+        </div>
+        <v-card-text>
+          <v-card-subtitle>
+            <span class="options">{{ hotel.adress }}</span>
+            <v-spacer></v-spacer>
+            <span class="options">{{ hotel.specialty }}</span>
+          </v-card-subtitle>
+          <v-img class="image_hotel" :src="hotel.photo" :alt="'image100x100 '+hotel.photo" />
         <span class="options">{{ hotel.prix }} $</span>
-      </v-card-text>
-    </div>
-  </v-card>
+        </v-card-text>
+      </div>
+ 
+    </v-card>
 </template>
 
 <script>
@@ -67,9 +64,11 @@ export default {
 .container_hotel {
   display: block;
   padding: 5px;
-  max-width: 400px;
 }
 .options {
   text-align: end;
+}
+.a {
+  border: 1px solid blue;
 }
 </style>

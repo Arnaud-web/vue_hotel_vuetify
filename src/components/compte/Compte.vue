@@ -1,31 +1,27 @@
 <template>
   <div id="apps" class="login">
     <p class="error">{{ datas.data ? datas.data.error : "" }}</p>
-    <v-card width="400" class="mx-auto mt-5" >
+    <v-card width="400" class="mx-auto mt-5">
       <v-card-title>
-        <h3> {{ isLogin ? "Segning" : "Segnup" }} </h3>
+        <h3>{{ isLogin ? "Segning" : "Segnup" }}</h3>
       </v-card-title>
       <v-card-text>
-        <v-row align="center" v-if="!isLogin"  >
-      <v-col cols="6">
-        <v-subheader>
-          Type de Compte
-          
-        </v-subheader>
-      </v-col>
-      <v-col cols="6">
-        <v-radio-group
-              column
-              v-model = "role"
-            >
-              <v-radio  v-for = "(item,index) in items" :key="index"
+        <v-row align="center" v-if="!isLogin">
+          <v-col cols="6">
+            <v-subheader> Type de Compte </v-subheader>
+          </v-col>
+          <v-col cols="6">
+            <v-radio-group column v-model="role">
+              <v-radio
+                v-for="(item, index) in items"
+                :key="index"
                 :label="item.name"
                 color="red darken-3"
                 :value="item.value"
               ></v-radio>
             </v-radio-group>
-      </v-col>
-    </v-row>
+          </v-col>
+        </v-row>
         <v-text-field
           label="Email"
           prepend-icon="mdi-account-circle"
@@ -39,11 +35,11 @@
         ></v-text-field>
         <v-card-actions>
           <v-spacer> </v-spacer>
-               <v-btn v-if="isLogin" @click = "isLogin = false" >Cree un Compte</v-btn>
-        <v-btn v-if="!isLogin" @click = "isLogin = true" >Se Connecter</v-btn>
-        <v-spacer></v-spacer>
-          <v-btn v-if="isLogin"  @click="connect()" >Connecter</v-btn>
-          <v-btn v-if="!isLogin"  @click="send()" > Enregistrer </v-btn>
+          <v-btn v-if="isLogin" @click="isLogin = false">Cree un Compte</v-btn>
+          <v-btn v-if="!isLogin" @click="isLogin = true">Se Connecter</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn v-if="isLogin" @click="connect()">Connecter</v-btn>
+          <v-btn v-if="!isLogin" @click="send()"> Enregistrer </v-btn>
         </v-card-actions>
       </v-card-text>
     </v-card>
@@ -60,13 +56,16 @@ export default {
       email: "",
       role: "",
       password: "",
-      items: [{
-        name: 'Client',
-        value: 'cleint'
-      },{
-        name:'Hotel',
-        value:'hotel'
-      }],
+      items: [
+        {
+          name: "Client",
+          value: "cleint",
+        },
+        {
+          name: "Hotel",
+          value: "hotel",
+        },
+      ],
       data: [],
     };
   },
@@ -79,15 +78,15 @@ export default {
     ...mapActions({
       setUser: "setUser",
     }),
-    signup(){
-        this.isLogin = false
+    signup() {
+      this.isLogin = false;
     },
     async connect() {
       console.log(this.email, this.password);
       if (this.password && this.email) {
         const json = { email: this.email, password: this.password };
         const res = await axios.post(
-          this.$store.state.url+"v1/users/login",
+          this.$store.state.url + "v1/users/login",
           json,
           {
             headers: {
@@ -106,16 +105,17 @@ export default {
       } else {
         console("not send");
       }
-    },async send() {
-      console.log(this.email, this.password,this.role);
-      console.log("Role",this.role)
+    },
+    async send() {
+      console.log(this.email, this.password, this.role);
+      console.log("Role", this.role);
       if (this.password && this.email) {
         const json = {
           email: this.email,
           role: this.role,
-          password: this.password
+          password: this.password,
         };
-        const res = await axios.post(this.$store.state.url+"v1/users", json, {
+        const res = await axios.post(this.$store.state.url + "v1/users", json, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",
@@ -141,8 +141,8 @@ export default {
 <style>
 .login {
   text-align: center;
-  display:block;
-  width:400px;
-  margin:auto;
+  display: block;
+  width: 400px;
+  margin: auto;
 }
 </style>
