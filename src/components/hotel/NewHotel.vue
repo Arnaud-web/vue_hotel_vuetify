@@ -3,7 +3,7 @@
     <v-card>
       <v-card-title>
         <v-spacer></v-spacer>
-        <v-btn color="info" @click="showFormulaire = !showFormulaire"
+        <v-btn  @click="showFormulaire = !showFormulaire"
           >Cree un Hotel
         </v-btn>
          <v-spacer></v-spacer>

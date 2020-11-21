@@ -13,15 +13,35 @@
           </v-card-subtitle>
           <v-img :src="hotel.photo" :alt="'image100x100 '+hotel.photo" />
         <span class="prix">{{ hotel.prix }} $</span>
+        <SendMail v-if = "user.id" :hotel = "hotel" />
+        <ShowCommentsHotel :hotel = "hotel"/>
+         <Comments v-if = "user.id" :hotel = "hotel" />
         </v-card-text>
       </v-card>
+      <div>
+     
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Comments from "./Comments"
+import { mapState } from "vuex";
+import ShowCommentsHotel from "./ShowCommentsHotel"
+import SendMail from "../mail/SendMail"
 export default {
   props: ["hotel"],
+   computed: {
+    ...mapState({
+      user: "user",
+    }),
+   },
+  components:{
+      Comments,
+      ShowCommentsHotel,
+      SendMail
+  }
 };
 </script>
 <style>

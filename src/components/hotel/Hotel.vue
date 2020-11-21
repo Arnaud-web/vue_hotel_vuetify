@@ -68,7 +68,4 @@ export default {
 .options {
   text-align: end;
 }
-.a {
-  border: 1px solid blue;
-}
 </style>

@@ -55,7 +55,7 @@ export default {
 
 <style>
 .reserve{
-    font-size: 30px;
+    font-size: 20px;
     background-color: cadetblue;
 }
 </style>
